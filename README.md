@@ -8,7 +8,7 @@ It keeps the same core content:
 - iRay render showcase
 - Carousel images from `assets/Carousel/`
 - YouTube video sections from `videos.txt`
-- Contact email
+- Contact/request form that opens a pre-filled email
 
 ## Run Locally
 
@@ -23,6 +23,10 @@ Then open `http://localhost:8080`.
 ## Hosting
 
 This site can be hosted on GitHub Pages, Cloudflare Pages, Netlify, Vercel, or any cheap static host. Point the `rvtwzd.com` DNS records at the host you choose.
+
+## Contact Form
+
+The contact form uses `mailto:` and opens the visitor's email app with a pre-filled message to `RevitWizard@proton.me`. This avoids third-party form services and the phishing warnings they can trigger in browser security extensions.
 
 ## Public Repo Safety
 

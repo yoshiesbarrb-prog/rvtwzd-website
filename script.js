@@ -220,8 +220,33 @@ loadVideos().catch(() => {
   }
 });
 
+const contactForm = document.querySelector('[data-contact-form]');
 const contactStatus = document.querySelector('[data-contact-status]');
 
-if (contactStatus && new URLSearchParams(window.location.search).get('sent') === '1') {
-  contactStatus.hidden = false;
+if (contactForm && contactStatus) {
+  contactForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+
+    if (formData.get('_honey')) {
+      return;
+    }
+
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const requestType = formData.get('request_type');
+    const message = formData.get('message');
+    const subject = `Revit Wizard request: ${requestType}`;
+    const body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Request type: ${requestType}`,
+      '',
+      String(message)
+    ].join('\n');
+
+    window.location.href = `mailto:RevitWizard@proton.me?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    contactStatus.hidden = false;
+  });
 }
