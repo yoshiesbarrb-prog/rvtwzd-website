@@ -1,0 +1,25 @@
+﻿[
+    {
+        "videoId":  "5zbyeS9oZ9Y",
+        "youtubeUrl":  "https://youtu.be/5zbyeS9oZ9Y",
+        "slug":  "revit-circuits",
+        "title":  "Revit Circuits",
+        "description":  "Calculate circuit lengths along cable tray in Revit"
+    },
+    {
+        "videoId":  "KuuYuyJyXsc",
+        "youtubeUrl":  "https://youtu.be/KuuYuyJyXsc",
+        "slug":  "curved-led-strip-lighting",
+        "title":  "Curved LED Strip Lighting",
+        "description":  "Create curved LED Strip lighting in Revit",
+        "linkLabel":  "Open the Revit family file",
+        "linkUrl":  "https://drive.google.com/file/d/1K1gG0zJQjY4a8aOfZSXEhegejahuDTO6/preview"
+    },
+    {
+        "videoId":  "7TmYIn1HzOU",
+        "youtubeUrl":  "https://youtu.be/7TmYIn1HzOU",
+        "slug":  "simple-electrical-fixture",
+        "title":  "Simple Electrical Fixture",
+        "description":  "Create a simple electrical fixture in Revit"
+    }
+]

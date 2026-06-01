@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Revit Wizard tools, tutorials, and realistic lighting renders for Revit.">
+  <meta name="theme-color" content="#0b82bd">
+  <meta property="og:title" content="Revit Wizard">
+  <meta property="og:description" content="Revit tools, tutorials, and realistic lighting renders.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.rvtwzd.com/">
+  <meta property="og:image" content="https://www.rvtwzd.com/assets/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Revit Wizard</title>
+  <link rel="icon" href="assets/rbD.JPG">
+  <link rel="preload" href="assets/hero.png" as="image">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Revit Wizard home">
+      <img src="assets/rbD.JPG" alt="" width="36" height="36">
+      <span>Revit Wizard</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="#iray">iRay</a>
+      <a href="#videos">Videos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__image" role="img" aria-label="Realistic Revit render of a modern wood-clad entry"></div>
+      <div class="hero__shade"></div>
+      <div class="hero__content">
+        <h1 id="hero-title">RvtWzd.com</h1>
+      </div>
+    </section>
+
+    <section class="section section--light" id="iray" aria-labelledby="iray-title">
+      <div class="section__inner">
+        <div class="section-heading">
+          <h2 id="iray-title">iRay</h2>
+          <p>Realistic Lighting Renders</p>
+        </div>
+
+        <div class="render-viewer" data-carousel>
+          <figure class="render-viewer__stage">
+            <img src="assets/Carousel/irender-01.png" alt="Realistic Revit lighting render of a modern home entry" loading="lazy" data-carousel-image>
+            <figcaption data-carousel-caption>Modern exterior entry render</figcaption>
+          </figure>
+          <div class="render-viewer__navigation" aria-label="Render gallery controls">
+            <button class="render-viewer__arrow" type="button" aria-label="Show previous render" data-carousel-prev>&lt;</button>
+            <div class="render-viewer__controls" data-carousel-dots></div>
+            <button class="render-viewer__arrow" type="button" aria-label="Show next render" data-carousel-next>&gt;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="videos" data-videos></div>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="site-footer__inner">
+      <span>Contact</span>
+      <a href="mailto:yoshiesbar.rb@gmail.com">yoshiesbar.rb@gmail.com</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
