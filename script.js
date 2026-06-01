@@ -7,6 +7,26 @@ function escapeHtml(value) {
     .replaceAll("'", '&#039;');
 }
 
+function isSafeRelativeImagePath(path) {
+  return typeof path === 'string'
+    && path.startsWith('assets/Carousel/')
+    && !path.includes('..')
+    && /\.(jpe?g|png|webp|gif)$/i.test(path);
+}
+
+function isSafeHttpUrl(url, allowedHosts) {
+  try {
+    const parsedUrl = new URL(url);
+    return parsedUrl.protocol === 'https:' && allowedHosts.includes(parsedUrl.hostname);
+  } catch {
+    return false;
+  }
+}
+
+function isSafeYouTubeId(videoId) {
+  return typeof videoId === 'string' && /^[a-zA-Z0-9_-]{11}$/.test(videoId);
+}
+
 const carousel = document.querySelector('[data-carousel]');
 
 if (carousel) {
@@ -63,7 +83,7 @@ if (carousel) {
       throw new Error('Unable to load carousel manifest.');
     }
 
-    slides = await response.json();
+    slides = (await response.json()).filter((slide) => isSafeRelativeImagePath(slide.src));
 
     if (!slides.length) {
       throw new Error('Carousel manifest is empty.');
@@ -116,10 +136,17 @@ function setupVideoEmbeds(root = document) {
 }
 
 function createVideoSection(video, index) {
+  if (!isSafeYouTubeId(video.videoId) || !isSafeHttpUrl(video.youtubeUrl, ['youtu.be'])) {
+    return '';
+  }
+
   const sectionTheme = index % 2 === 0 ? 'feature--dark' : 'feature--light';
   const reverseClass = index % 2 === 1 ? ' feature__inner--reverse' : '';
   const headingId = `${video.slug}-title`;
-  const extraLink = video.linkUrl && video.linkLabel
+  const hasSafeExtraLink = video.linkUrl
+    && video.linkLabel
+    && isSafeHttpUrl(video.linkUrl, ['drive.google.com', 'youtu.be', 'www.youtube.com']);
+  const extraLink = hasSafeExtraLink
     ? `<a class="text-link" href="${escapeHtml(video.linkUrl)}" target="_blank" rel="noreferrer">${escapeHtml(video.linkLabel)}</a>`
     : '';
 
@@ -155,7 +182,7 @@ async function loadVideos() {
     throw new Error('Unable to load video manifest.');
   }
 
-  const videos = await response.json();
+  const videos = (await response.json()).filter((video) => isSafeYouTubeId(video.videoId));
   videosContainer.innerHTML = videos.map(createVideoSection).join('');
   setupVideoEmbeds(videosContainer);
 }

@@ -24,6 +24,12 @@ Then open `http://localhost:8080`.
 
 This site can be hosted on GitHub Pages, Cloudflare Pages, Netlify, Vercel, or any cheap static host. Point the `rvtwzd.com` DNS records at the host you choose.
 
+## Public Repo Safety
+
+Do not commit passwords, API keys, private downloads, paid plugin files, customer files, or private Revit models. This site is static and public, so every file in the repository can be downloaded by visitors.
+
+The browser code only reads local JSON manifests and public YouTube/image URLs. If you add external links to `videos.txt`, keep them to public `https://` URLs.
+
 ## Assets
 
 The original Google image URLs block direct downloads with 403 errors, so the hero image was captured from the rendered public page. The iRay carousel uses the original render files in `assets/Carousel/`.
