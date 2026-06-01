@@ -121,7 +121,7 @@ a {
 }
 
 .hero__image {
-  background: url("assets/hero.png") center / cover no-repeat;
+  background: url("assets/hero.png?v=20260601-hero") center / cover no-repeat;
   transform: scale(1.01);
 }
 
