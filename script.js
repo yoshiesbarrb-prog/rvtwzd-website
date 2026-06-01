@@ -34,6 +34,11 @@ function isSafeYouTubeId(videoId) {
   return typeof videoId === 'string' && /^[a-zA-Z0-9_-]{11}$/.test(videoId);
 }
 
+function formatFileMeta(video) {
+  const details = [video.linkFileName, video.linkFileSize].filter(Boolean);
+  return details.length ? details.join(' - ') : 'Revit family download';
+}
+
 const carousel = document.querySelector('[data-carousel]');
 
 if (carousel) {
@@ -153,8 +158,18 @@ function createVideoSection(video, index) {
   const hasSafeExtraLink = video.linkUrl
     && video.linkLabel
     && (isSafeFamilyDownloadPath(video.linkUrl) || isSafeHttpUrl(video.linkUrl, ['drive.google.com', 'youtu.be', 'www.youtube.com']));
-  const extraLink = hasSafeExtraLink
-    ? `<a class="text-link" href="${escapeHtml(video.linkUrl)}"${isSafeFamilyDownloadPath(video.linkUrl) ? ' download' : ' target="_blank" rel="noreferrer"'}>${escapeHtml(video.linkLabel)}</a>`
+  const isLocalDownload = hasSafeExtraLink && isSafeFamilyDownloadPath(video.linkUrl);
+  const extraLink = hasSafeExtraLink && isLocalDownload
+    ? `<div class="resource-download">
+        <span>
+          <span class="resource-download__label">${escapeHtml(video.linkLabel)}</span>
+          <span class="resource-download__meta">${escapeHtml(formatFileMeta(video))}</span>
+        </span>
+        <a class="resource-download__button" href="${escapeHtml(video.linkUrl)}" download>Download</a>
+      </div>`
+    : '';
+  const externalLink = hasSafeExtraLink && !isLocalDownload
+    ? `<a class="text-link" href="${escapeHtml(video.linkUrl)}" target="_blank" rel="noreferrer">${escapeHtml(video.linkLabel)}</a>`
     : '';
 
   return `
@@ -170,7 +185,10 @@ function createVideoSection(video, index) {
         <div class="feature__copy">
           <h2 id="${escapeHtml(headingId)}">${escapeHtml(video.title)}</h2>
           <p>${escapeHtml(video.description)}</p>
-          ${extraLink}
+          <div class="feature__actions">
+            ${extraLink}
+            ${externalLink}
+          </div>
         </div>
       </div>
     </section>`;

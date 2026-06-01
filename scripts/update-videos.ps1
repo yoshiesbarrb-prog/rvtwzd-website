@@ -27,6 +27,18 @@ function ConvertTo-Slug($value) {
     return ($slug -replace '(^-|-$)', '')
 }
 
+function Format-FileSize($bytes) {
+    if ($bytes -ge 1MB) {
+        return "{0:N1} MB" -f ($bytes / 1MB)
+    }
+
+    if ($bytes -ge 1KB) {
+        return "{0:N0} KB" -f ($bytes / 1KB)
+    }
+
+    return "$bytes B"
+}
+
 $videos = @()
 $lineNumber = 0
 
@@ -60,6 +72,16 @@ foreach ($line in Get-Content -Path $sourcePath) {
     if ($parts.Count -ge 5 -and $parts[3].Trim() -and $parts[4].Trim()) {
         $video.linkLabel = $parts[3].Trim()
         $video.linkUrl = $parts[4].Trim()
+
+        if ($video.linkUrl.StartsWith('assets/Families/')) {
+            $downloadPath = Join-Path $root $video.linkUrl
+
+            if (Test-Path $downloadPath) {
+                $downloadFile = Get-Item $downloadPath
+                $video.linkFileName = $downloadFile.Name
+                $video.linkFileSize = Format-FileSize $downloadFile.Length
+            }
+        }
     }
 
     $videos += $video

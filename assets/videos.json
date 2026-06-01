@@ -13,7 +13,9 @@
         "title":  "Curved LED Strip Lighting",
         "description":  "Create curved LED Strip lighting in Revit",
         "linkLabel":  "Download the Revit family file",
-        "linkUrl":  "assets/Families/LED Arc.rfa"
+        "linkUrl":  "assets/Families/LED Arc.rfa",
+        "linkFileName":  "LED Arc.rfa",
+        "linkFileSize":  "352 KB"
     },
     {
         "videoId":  "7TmYIn1HzOU",
