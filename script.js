@@ -14,6 +14,13 @@ function isSafeRelativeImagePath(path) {
     && /\.(jpe?g|png|webp|gif)$/i.test(path);
 }
 
+function isSafeFamilyDownloadPath(path) {
+  return typeof path === 'string'
+    && path.startsWith('assets/Families/')
+    && !path.includes('..')
+    && /\.(rfa|rvt|zip)$/i.test(path);
+}
+
 function isSafeHttpUrl(url, allowedHosts) {
   try {
     const parsedUrl = new URL(url);
@@ -77,7 +84,7 @@ if (carousel) {
   }
 
   async function loadSlides() {
-    const response = await fetch('assets/carousel.json');
+    const response = await fetch('assets/carousel.json', { cache: 'no-cache' });
 
     if (!response.ok) {
       throw new Error('Unable to load carousel manifest.');
@@ -145,9 +152,9 @@ function createVideoSection(video, index) {
   const headingId = `${video.slug}-title`;
   const hasSafeExtraLink = video.linkUrl
     && video.linkLabel
-    && isSafeHttpUrl(video.linkUrl, ['drive.google.com', 'youtu.be', 'www.youtube.com']);
+    && (isSafeFamilyDownloadPath(video.linkUrl) || isSafeHttpUrl(video.linkUrl, ['drive.google.com', 'youtu.be', 'www.youtube.com']));
   const extraLink = hasSafeExtraLink
-    ? `<a class="text-link" href="${escapeHtml(video.linkUrl)}" target="_blank" rel="noreferrer">${escapeHtml(video.linkLabel)}</a>`
+    ? `<a class="text-link" href="${escapeHtml(video.linkUrl)}"${isSafeFamilyDownloadPath(video.linkUrl) ? ' download' : ' target="_blank" rel="noreferrer"'}>${escapeHtml(video.linkLabel)}</a>`
     : '';
 
   return `
@@ -176,7 +183,7 @@ async function loadVideos() {
     return;
   }
 
-  const response = await fetch('assets/videos.json');
+  const response = await fetch('assets/videos.json', { cache: 'no-cache' });
 
   if (!response.ok) {
     throw new Error('Unable to load video manifest.');

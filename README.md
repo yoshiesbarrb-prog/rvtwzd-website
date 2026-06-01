@@ -30,6 +30,8 @@ Do not commit passwords, API keys, private downloads, paid plugin files, custome
 
 The browser code only reads local JSON manifests and public YouTube/image URLs. If you add external links to `videos.txt`, keep them to public `https://` URLs.
 
+Public Revit family downloads can live in `assets/Families/` and be linked from `videos.txt` using a relative path such as `assets/Families/LED Arc.rfa`.
+
 ## Assets
 
 The original Google image URLs block direct downloads with 403 errors, so the hero image was captured from the rendered public page. The iRay carousel uses the original render files in `assets/Carousel/`.

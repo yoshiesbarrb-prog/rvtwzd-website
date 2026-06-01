@@ -2,5 +2,5 @@
 # YouTube URL | Heading | Description | Optional link label | Optional link URL
 
 https://youtu.be/5zbyeS9oZ9Y | Revit Circuits | Calculate circuit lengths along cable tray in Revit
-https://youtu.be/KuuYuyJyXsc | Curved LED Strip Lighting | Create curved LED Strip lighting in Revit | Open the Revit family file | https://drive.google.com/file/d/1K1gG0zJQjY4a8aOfZSXEhegejahuDTO6/preview
+https://youtu.be/KuuYuyJyXsc | Curved LED Strip Lighting | Create curved LED Strip lighting in Revit | Download the Revit family file | assets/Families/LED Arc.rfa
 https://youtu.be/7TmYIn1HzOU | Simple Electrical Fixture | Create a simple electrical fixture in Revit
