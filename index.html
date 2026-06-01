@@ -76,8 +76,51 @@
 
   <footer class="site-footer" id="contact">
     <div class="site-footer__inner">
-      <span>Contact</span>
-      <a href="mailto:RevitWizard@proton.me">RevitWizard@proton.me</a>
+      <div class="contact-copy">
+        <h2>Send A Request</h2>
+        <p>Ask about a family, suggest a tutorial, or send over a Revit workflow problem worth digging into.</p>
+        <a href="mailto:RevitWizard@proton.me">RevitWizard@proton.me</a>
+      </div>
+
+      <form class="contact-form" action="https://formsubmit.co/RevitWizard@proton.me" method="POST">
+        <input type="hidden" name="_subject" value="New Revit Wizard request">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://www.rvtwzd.com/?sent=1#contact">
+        <label class="contact-form__hidden" aria-hidden="true">Leave this empty
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off">
+        </label>
+
+        <div class="contact-form__row">
+          <label for="request-name">Name</label>
+          <input id="request-name" name="name" type="text" autocomplete="name" required>
+        </div>
+
+        <div class="contact-form__row">
+          <label for="request-email">Email</label>
+          <input id="request-email" name="email" type="email" autocomplete="email" required>
+        </div>
+
+        <div class="contact-form__row">
+          <label for="request-type">Request Type</label>
+          <select id="request-type" name="request_type" required>
+            <option value="">Choose one</option>
+            <option>Revit family request</option>
+            <option>Tutorial suggestion</option>
+            <option>Workflow question</option>
+            <option>Rendering question</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="contact-form__row">
+          <label for="request-message">Message</label>
+          <textarea id="request-message" name="message" rows="6" required></textarea>
+        </div>
+
+        <button class="contact-form__button" type="submit">Send Request</button>
+        <p class="contact-form__status" data-contact-status hidden>Request sent. Thanks for reaching out.</p>
+      </form>
     </div>
   </footer>
 

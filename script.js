@@ -219,3 +219,9 @@ loadVideos().catch(() => {
     videosContainer.innerHTML = '<section class="feature feature--dark"><div class="feature__inner"><div class="feature__copy"><h2>Videos</h2><p>Add YouTube links to videos.txt and run scripts/update-videos.ps1.</p></div></div></section>';
   }
 });
+
+const contactStatus = document.querySelector('[data-contact-status]');
+
+if (contactStatus && new URLSearchParams(window.location.search).get('sent') === '1') {
+  contactStatus.hidden = false;
+}
