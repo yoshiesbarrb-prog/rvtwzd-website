@@ -246,7 +246,7 @@ if (contactForm && contactStatus) {
       String(message)
     ].join('\n');
 
-    window.location.href = `mailto:RevitWizard@proton.me?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:Ron@rvtwzd.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     contactStatus.hidden = false;
   });
 }

@@ -26,7 +26,7 @@ This site can be hosted on GitHub Pages, Cloudflare Pages, Netlify, Vercel, or a
 
 ## Contact Form
 
-The contact form uses `mailto:` and opens the visitor's email app with a pre-filled message to `RevitWizard@proton.me`. This avoids third-party form services and the phishing warnings they can trigger in browser security extensions.
+The contact form uses `mailto:` and opens the visitor's email app with a pre-filled message to `Ron@rvtwzd.com`. This avoids third-party form services and the phishing warnings they can trigger in browser security extensions.
 
 ## Public Repo Safety
 
