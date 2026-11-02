@@ -1,0 +1,22 @@
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "rvtwzd-website",
+  "compatibility_date": "2026-10-01",
+  "account_id": "4abaf8902378f17e0f7b2947568c1a5d",
+  "workers_dev": false,
+  "main": "worker.js",
+
+  // Static site with a tiny Worker for the apex → www redirect. Files in .assetsignore are not uploaded.
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+
+  "routes": [
+    { "pattern": "www.rvtwzd.com", "custom_domain": true },
+    { "pattern": "rvtwzd.com", "custom_domain": true }
+  ]
+}

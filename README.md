@@ -22,7 +22,21 @@ Then open `http://localhost:8080`.
 
 ## Hosting
 
-This site can be hosted on GitHub Pages, Cloudflare Pages, Netlify, Vercel, or any cheap static host. Point the `rvtwzd.com` DNS records at the host you choose.
+The site is hosted on **Cloudflare Workers (static assets)** at `https://www.rvtwzd.com`, with `rvtwzd.com` redirecting to `www`. DNS for `rvtwzd.com` is on Cloudflare. GitHub holds the source only.
+
+Deploy after any change:
+
+```powershell
+npx wrangler deploy
+```
+
+- `wrangler.jsonc` — Worker config (custom domains, asset handling).
+- `worker.js` — the only server code: apex → www redirect; everything else is served as static assets.
+- `.assetsignore` — files that are **not** uploaded (scripts, docs, `videos.txt`, config).
+- `_headers` — security headers applied by Cloudflare.
+- `404.html` — served for unknown paths.
+
+The private model viewer lives separately at `https://view.rvtwzd.com` (see the `RevitWebCoordination` project).
 
 ## Contact Form
 

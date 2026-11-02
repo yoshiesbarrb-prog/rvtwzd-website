@@ -1,0 +1,14 @@
+# Not uploaded as site assets (Cloudflare Workers static assets).
+.git
+.gitignore
+.vscode
+.wrangler
+.cloudflare
+scripts
+README.md
+*.md
+videos.txt
+CNAME
+wrangler.jsonc
+worker.js
+.assetsignore
